@@ -1,0 +1,26 @@
+{
+  "name": "purescript-yet-another",
+  "version": "1.0.0",
+  "description": "PureScript demo presentation",
+  "main": "build/main.js",
+  "dependencies": {
+    "purescript": "^0.11.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mgajda/purescript-yet-another.git"
+  },
+  "keywords": [
+    "demo"
+  ],
+  "author": "Michal <migamake@migamake.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mgajda/purescript-yet-another/issues"
+  },
+  "homepage": "https://github.com/mgajda/purescript-yet-another#readme"
+}

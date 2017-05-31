@@ -31,16 +31,99 @@ class: center, middle
 ### May 31st 2017
 
 ---
-# Goal of this talk
+# Demo PureScript in...
 
-## Example PureScript in the browser
-## Example PureScript Node server
-## Easiness to write PureScript FFI
+## ... in the browser
+## ... on Node server
+## PureScript for Screeps.com game AI implementation
+## PureScript FFI
 ## Benefits of PureScript vs Elm
+---
+# PureScript on the server
 
+```shell
+npm install psci
+bower install purescript-jquery
+pulp build
+```
+
+```purescript
+import Control.Monad.Eff
+import Control.Monad.Eff.Console
+
+main :: forall eff. Eff ( console :: CONSOLE
+                        | eff
+                        ) Unit
+main = do
+  log "Pure hero welcomes in Node console!"
+  logShow $ 2*2
+```
 ---
 # PureScript in the browser
 
+```purescript
+import Control.Monad.Eff.JQuery
+import DOM(DOM)
+-- ...few more imports...
+
+main :: forall eff. Eff ( dom :: DOM
+                        , console :: CONSOLE
+                        | eff
+                        ) Unit
+main =
+  ready $ do
+    -- Get the document body with JQuery
+    body &lt;- body
+
+    -- Create a text box
+    div   &lt;- create "<div>"
+    input &lt;- create "<input>"
+    appendText "Your Name: " div
+    append input div
+    append div body
+```
+---
+# [Screeps.com](http://www.screeps.com)
+
+Programming game in JavaScript.
+Rather [complex API](http://docs.screeps.com/api/).
+
+![Screeps.com screenshot](screeps.png)
+```shell
+bower install purescript-screeps-classy
+```
+
+Great for modeling with type classes:
+```purescript
+class Structural   a -- has `structureType` - Structure or ConstructionSite
+
+class ( RoomObject a
+      , Structural a
+      , HasId      a ) &lt;= Structure a where
+    _structureType     :: Proxy     a -&gt; StructureType
+```
+---
+# PureScript FFI
+
+Put in the file `api.js`:
+```javascript
+exports.color_red = COLOR_RED;
+
+exports.unsafeField = function(key){
+  return function(obj){
+    return obj[key];
+  }
+}
+```
+In the file `api.purs`:
+```purescript
+-- Unsafe
+foreign import unsafeField :: forall obj val. String -> obj -> val
+
+-- Safe
+ticksToLive :: Creep -> Int
+ticksToLive  = unsafeField "ticksToLive"
+```
 
 ---
 # Benefits

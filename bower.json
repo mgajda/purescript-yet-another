@@ -1,0 +1,25 @@
+{
+  "name": "purescript-yet-another",
+  "homepage": "https://github.com/mgajda/purescript-yet-another",
+  "authors": [
+    "Michal J. Gajda <migamake@migamake.com>"
+  ],
+  "description": "PureScript demo presentation",
+  "main": "src/Server.purs",
+  "keywords": [
+    "demo"
+  ],
+  "license": "PublicDomain",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "purescript-console": "^3.0.0",
+    "purescript-jquery": "^4.0.0"
+  }
+}
